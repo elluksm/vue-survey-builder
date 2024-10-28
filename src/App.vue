@@ -5,7 +5,7 @@ import SurveyBuilder from './components/SurveyBuilder.vue'
 <template>
   <header>
     <div class="wrapper">
-      <h1>Amazing Survey builder</h1>
+      <h1 class="text-3xl font-bold underline">Amazing Survey builder</h1>
     </div>
   </header>
 
