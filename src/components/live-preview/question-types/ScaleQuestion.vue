@@ -4,6 +4,6 @@ defineProps<{
 }>()
 </script>
 
-<template>
-  <h2>Let's build your amazing survey!</h2>
-</template>
+<template><p>Scale question</p></template>
+
+<style scoped></style>

@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import SurveyBuilder from './components/SurveyBuilder.vue'
+import SurveyWizard from '@/components/SurveyWizard.vue'
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <h1 class="text-3xl font-bold underline">Amazing Survey builder</h1>
+      <h1 class="text-3xl font-bold">Survey Wizard</h1>
+      <h2>Let's build your amazing survey!</h2>
     </div>
   </header>
 
   <main>
-    <SurveyBuilder />
+    <SurveyWizard />
   </main>
 </template>
 
