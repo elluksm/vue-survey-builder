@@ -6,8 +6,12 @@ defineProps<{
 </script>
 
 <template>
-  <label>{{ question.label }}</label>
-  <textarea :placeholder="question.placeholder"></textarea>
+  <p class="text-cyan-800 font-bold pb-2">TextBox Question</p>
+  <v-text-field
+    label="Question Title"
+    v-model="question.label"
+    variant="solo"
+  ></v-text-field>
 </template>
 
 <style scoped></style>

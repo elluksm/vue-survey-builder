@@ -6,8 +6,13 @@ defineProps<{
 </script>
 
 <template>
-  <label>{{ question.label }}</label>
-  <textarea :placeholder="question.placeholder"></textarea>
+  <v-textarea
+    :label="question.label"
+    :placeholder="question.placeholder"
+    variant="solo"
+    rows="3"
+    auto-grow
+  ></v-textarea>
 </template>
 
 <style scoped></style>

@@ -6,7 +6,7 @@ defineProps<{
 </script>
 
 <template>
-  <p>Likert Scale Question</p>
+  <p class="text-cyan-800 font-bold pb-2">Likert Scale Question</p>
   <label>{{ question.label }}</label>
   <div v-for="(option, index) in question.scaleLabels" :key="index">
     <input type="text" :value="option.label" placeholder="Edit option label" />
