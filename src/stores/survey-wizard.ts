@@ -1,6 +1,6 @@
 import { ref, watch } from 'vue'
 import { defineStore } from 'pinia'
-import { throttle } from 'lodash'
+import { throttle, cloneDeep } from 'lodash'
 import type {
   Survey,
   LikertOption,
@@ -45,7 +45,8 @@ export const useSurveyWizardStore = defineStore('survey-wizard', () => {
       id: generateId(),
       type: 'scale',
       label: 'How satisfied are you?',
-      options: defaultLikertOptions(),
+      scaleLabels: defaultLikertOptions(),
+      subquestions: [{ id: generateId(), text: 'Work environment' }],
     }
     survey.value.questions.push(newQuestion)
   }
@@ -67,13 +68,21 @@ export const useSurveyWizardStore = defineStore('survey-wizard', () => {
     const questionIndex = survey.value.questions.findIndex(q => q.id === id)
     if (questionIndex !== -1) {
       const questionToCopy = survey.value.questions[questionIndex]
-      const copiedQuestion = { ...questionToCopy, id: generateId() }
-      if (copiedQuestion.type === 'scale') {
-        copiedQuestion.options = copiedQuestion.options.map(option => ({
-          ...option,
-        }))
-      }
+      const copiedQuestion = cloneDeep(questionToCopy)
+      copiedQuestion.id = generateId()
       survey.value.questions.splice(questionIndex + 1, 0, copiedQuestion) // Insert copied question
+    }
+  }
+
+  const addSubquestion = (questionId: string) => {
+    const question = survey.value.questions.find(
+      q => q.id === questionId && q.type === 'scale',
+    ) as LikertScaleQuestion
+    if (question) {
+      question.subquestions.push({
+        id: generateId(),
+        text: 'Weather',
+      })
     }
   }
 
@@ -103,5 +112,6 @@ export const useSurveyWizardStore = defineStore('survey-wizard', () => {
     addLikertScaleQuestion,
     deleteQuestion,
     duplicateQuestion,
+    addSubquestion,
   }
 })

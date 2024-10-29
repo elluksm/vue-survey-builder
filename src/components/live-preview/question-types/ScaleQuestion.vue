@@ -7,7 +7,7 @@ defineProps<{
 
 <template>
   <label>{{ question.label }}</label>
-  <div v-for="option in question.options" :key="option.value">
+  <div v-for="option in question.scaleLabels" :key="option.value">
     <input type="radio" :name="question.id" :value="option.value" />
     <span>{{ option.label }}</span>
   </div>
