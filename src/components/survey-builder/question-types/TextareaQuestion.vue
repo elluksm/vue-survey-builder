@@ -1,9 +1,13 @@
 <script setup lang="ts">
+import type { OpenTextQuestion } from '@/types/Survey'
 defineProps<{
-  msg: string
+  question: OpenTextQuestion
 }>()
 </script>
 
-<template><p>Textarea question</p></template>
+<template>
+  <label>{{ question.label }}</label>
+  <textarea :placeholder="question.placeholder"></textarea>
+</template>
 
 <style scoped></style>

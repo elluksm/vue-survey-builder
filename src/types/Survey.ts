@@ -8,7 +8,7 @@ export interface Survey {
 }
 
 // Union type for different question types
-type Question = ScaleQuestion | TextareaQuestion
+type Question = LikertScaleQuestion | OpenTextQuestion
 
 interface QuestionBase {
   id: string
@@ -16,12 +16,11 @@ interface QuestionBase {
   label: string
   helpText?: string
   required?: boolean
-  answer?: number // User answer (optional, for preview or saved responses)
 }
 
 export type QuestionType = 'scale' | 'textarea'
 
-export interface TextareaQuestion extends QuestionBase {
+export interface OpenTextQuestion extends QuestionBase {
   type: 'textarea'
   placeholder?: string
 }
@@ -31,7 +30,7 @@ export interface LikertOption {
   label: string // Descriptive label for the option (e.g., "Strongly Agree")
 }
 
-export interface ScaleQuestion extends QuestionBase {
+export interface LikertScaleQuestion extends QuestionBase {
   type: 'scale'
   options: LikertOption[] // Array of options for Likert scale
 }

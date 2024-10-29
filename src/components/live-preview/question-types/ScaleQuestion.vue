@@ -1,9 +1,16 @@
 <script setup lang="ts">
+import type { LikertOption, LikertScaleQuestion } from '@/types/Survey'
 defineProps<{
-  msg: string
+  question: LikertScaleQuestion
 }>()
 </script>
 
-<template><p>Scale question</p></template>
+<template>
+  <label>{{ question.label }}</label>
+  <div v-for="option in question.options" :key="option.value">
+    <input type="radio" :name="question.id" :value="option.value" />
+    <span>{{ option.label }}</span>
+  </div>
+</template>
 
 <style scoped></style>
