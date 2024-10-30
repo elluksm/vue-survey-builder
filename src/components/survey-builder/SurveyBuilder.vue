@@ -41,7 +41,7 @@ const {
       <div class="flex justify-center">
         <div class="bg-cyan-100 py-4 px-6 mb-6 drop-shadow-md rounded">
           <p>
-            <v-icon icon="mdi-plus" size="small" class="mr-1" />Add Questions
+            <v-icon icon="mdi-plus" size="small" class="mr-1" />Add Question
           </p>
           <v-btn
             class="m-2"

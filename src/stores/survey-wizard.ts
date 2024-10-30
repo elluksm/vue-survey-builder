@@ -18,7 +18,7 @@ export const useSurveyWizardStore = defineStore('survey-wizard', () => {
   */
 
   const survey = ref<Survey>({
-    id: '123', // Placeholder - it would be generated, when saving to a real database
+    id: '12345', // Placeholder - it would be generated, when saving to a real database
     title: 'New Survey',
     description: 'Please answer the following questions.',
     questions: [], // Start with an empty questions array
@@ -44,9 +44,8 @@ export const useSurveyWizardStore = defineStore('survey-wizard', () => {
     const newQuestion: LikertScaleQuestion = {
       id: generateId(),
       type: 'scale',
-      label: 'How satisfied are you?',
+      label: 'How often do you use this product?',
       scaleLabels: defaultLikertOptions(),
-      subquestions: [{ id: generateId(), text: 'Work environment' }],
     }
     survey.value.questions.push(newQuestion)
   }
@@ -71,18 +70,6 @@ export const useSurveyWizardStore = defineStore('survey-wizard', () => {
       const copiedQuestion = cloneDeep(questionToCopy)
       copiedQuestion.id = generateId()
       survey.value.questions.splice(questionIndex + 1, 0, copiedQuestion) // Insert copied question
-    }
-  }
-
-  const addSubquestion = (questionId: string) => {
-    const question = survey.value.questions.find(
-      q => q.id === questionId && q.type === 'scale',
-    ) as LikertScaleQuestion
-    if (question) {
-      question.subquestions.push({
-        id: generateId(),
-        text: 'Weather',
-      })
     }
   }
 
@@ -112,6 +99,5 @@ export const useSurveyWizardStore = defineStore('survey-wizard', () => {
     addLikertScaleQuestion,
     deleteQuestion,
     duplicateQuestion,
-    addSubquestion,
   }
 })

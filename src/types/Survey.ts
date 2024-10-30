@@ -30,13 +30,7 @@ export interface LikertOption {
   label: string // Descriptive label for the option (e.g., "Strongly Agree")
 }
 
-export interface LikertSubquestion {
-  id: string
-  text: string
-}
-
 export interface LikertScaleQuestion extends QuestionBase {
   type: 'scale'
   scaleLabels: LikertOption[] // Array of options for Likert scale
-  subquestions: LikertSubquestion[]
 }
